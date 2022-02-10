@@ -1,0 +1,28 @@
+import schedule #install schedule library: pip install schedule
+import tweepy #install tweepy: pip install tweepy
+
+# Consumer keys and access tokens, used for OAuth
+CONSUMER_KEY = 'CONSUMER KEY AS STRING'
+CONSUMER_SECRET = 'CONSUMER SECRET AS STRING'
+ACCESS_KEY = 'ACCESS KEY AS STRING'
+ACCESS_SECRET = 'ACCESS SECRET AS STRING'
+
+def TASK():
+            # OAuth process, using the keys and tokens
+            auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+            auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+
+            # Creation of the actual interface, using authentication
+            api = tweepy.API(auth)
+
+
+            # Sample method, used to update a status, you can write message 
+            # whatever you want to post in twitter
+            api.update_status("Insert Tweet here." + " #MaybeAHasTag?" )
+            return
+        
+#If program left to run,  posts status every 2 hours. 
+schedule.every(2).hour.do(TASK)
+
+while True:
+    schedule.run_pending()
