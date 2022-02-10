@@ -22,7 +22,7 @@ def TASK():
             return
         
 #If program left to run,  posts status every 2 hours. 
-schedule.every(2).hour.do(TASK)
+schedule.every(2).hours.do(TASK)
 
 while True:
     schedule.run_pending()
